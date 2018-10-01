@@ -168,7 +168,7 @@
     <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-youtrack-converter:0.26.4" level="project" />
     <orderEntry type="library" name="Maven: net.serenity-bdd:serenity-junit:1.9.45" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.25" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.11.1" level="project" />
   </component>
 </module>
