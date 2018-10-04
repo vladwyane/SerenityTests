@@ -1,10 +1,12 @@
 package pages;
 
+import data.Users;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import static data.URL_values.*;
 
-@DefaultUrl("https://hs.bigdropinc.net/sign-up")
+@DefaultUrl(SIGN_UP_URL)
 public class CreateAccountPage extends BasePage {
 
     @FindBy(id = "registration-block-first-name")
@@ -88,24 +90,28 @@ public class CreateAccountPage extends BasePage {
         return firstNameFieldNote.getText();
     }
 
-    public String lastNameNoteText() {
-        return lastNameFieldNote.getText();
+    public WebElement getFirstNameFieldNote() {
+        return firstNameFieldNote;
     }
 
-    public String passwordNoteText() {
-        return passwordFieldNote.getText();
+    public WebElement getLastNameFieldNote() {
+        return lastNameFieldNote;
     }
 
-    public String congPasswordNoteText() {
-        return confPasswordFieldNote.getText();
+    public WebElement getPasswordFieldNote() {
+        return passwordFieldNote;
     }
 
-    public String emailNoteText() {
-        return emailFieldNote.getText();
+    public WebElement getConfPasswordFieldNote() {
+        return confPasswordFieldNote;
     }
 
-    public String phoneNoteText() {
-        return passwordFieldNote.getText();
+    public WebElement getPhoneFieldNote() {
+        return phoneFieldNote;
+    }
+
+    public WebElement getEmailFieldNote() {
+        return emailFieldNote;
     }
 
     public CreateAccountPage clickLocationField() {
@@ -113,7 +119,44 @@ public class CreateAccountPage extends BasePage {
         return this;
     }
 
+    public CreateAccountPage checkingErrorNotesAllFieldsAreBlank() {
+        String errorNoteFieldsBlank = "This field can't be blank";
+        String errorColor = "rgba(235, 0, 0, 1)";
 
+        softAssert.assertEquals(getFirstNameFieldNote().getText(), errorNoteFieldsBlank);
+        softAssert.assertEquals(getFirstNameFieldNote().getCssValue("color"), errorColor);
 
+        softAssert.assertEquals(getLastNameFieldNote().getText(), errorNoteFieldsBlank);
+        softAssert.assertEquals(getLastNameFieldNote().getCssValue("color"), errorColor);
 
+        softAssert.assertEquals(getPasswordFieldNote().getText(), errorNoteFieldsBlank);
+        softAssert.assertEquals(getPasswordFieldNote().getCssValue("color"), errorColor);
+
+        softAssert.assertEquals(getEmailFieldNote().getText(), errorNoteFieldsBlank);
+        softAssert.assertEquals(getEmailFieldNote().getCssValue("color"), errorColor);
+
+        softAssert.assertEquals(getPasswordFieldNote().getText(), errorNoteFieldsBlank);
+        softAssert.assertEquals(getPasswordFieldNote().getCssValue("color"), errorColor);
+
+        softAssert.assertAll();
+        return new CreateAccountPage();
+    }
+
+    public CreateAccountPage checkingErrorNoteNotMatchPassword() {
+        String errorNoteNotMatchPassword = "This field doesn't match password";
+        String errorColor = "rgba(235, 0, 0, 1)";
+        softAssert.assertEquals(getConfPasswordFieldNote().getText(), errorNoteNotMatchPassword);
+        softAssert.assertEquals(getConfPasswordFieldNote().getCssValue("color"), errorColor);
+        softAssert.assertAll();
+        return new CreateAccountPage();
+    }
+
+    public CreateAccountPage checkingErrorNoteExistEmail(String userEmail) {
+        String errorNotExistEmail = "Email \"" + userEmail + "\" has already been taken.";
+        String errorColor = "rgba(235, 0, 0, 1)";
+        softAssert.assertEquals(getEmailFieldNote().getText(), errorNotExistEmail);
+        softAssert.assertEquals(getEmailFieldNote().getCssValue("color"), errorColor);
+        softAssert.assertAll();
+        return new CreateAccountPage();
+    }
 }

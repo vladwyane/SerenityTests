@@ -1,5 +1,6 @@
 package popups;
 
+import data.LocationsData;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -12,7 +13,6 @@ import java.util.List;
  * Created by bigdrop on 10/1/2018.
  */
 public class LocationPopup extends BasePage{
-
     @FindBy(xpath = "//div[@aria-label='Locations']//a[contains(text(), 'Find locations')]")
     private WebElement findLocationLink;
 
@@ -31,16 +31,20 @@ public class LocationPopup extends BasePage{
     @FindBy(xpath = "//div[@class='search-location']//input[@value='Find Stores']")
     private WebElement findStoreBut;
 
+    public List<WebElement> getTitlesLocationList() {
+        return titlesLocationList;
+    }
+
+    public String getTitlesLocation(int index) {
+        return titlesLocationList.get(index).getText();
+    }
+
     public void clickFindLocationLink() {
         clickOn(findLocationLink);
     }
 
     public void clickRightArrowOfCarousel() {
         clickOn(rightArrowOfCarousel);
-    }
-
-    public String getTitleOfLocation(int index) {
-        return titlesLocationList.get(index).getText();
     }
 
     public LocationPopup clickSelectButOfLocation(int index) {
@@ -57,4 +61,19 @@ public class LocationPopup extends BasePage{
         clickOn(findStoreBut);
         return this;
     }
+
+    public void chooseLocation(String locationName) {
+        clickFindLocationLink();
+        for (int i = 0; i < getTitlesLocationList().size(); i++) {
+            if(!element(getTitlesLocationList().get(i)).isVisible())
+                clickRightArrowOfCarousel();
+            String ee = getTitlesLocationList().get(i).getText();
+            if(getTitlesLocationList().get(i).getText().contains(locationName.toUpperCase())) {
+                clickSelectButOfLocation(i);
+                return;
+            }
+        }
+        clickSelectButOfLocation(getTitlesLocationList().size() - 1);
+    }
+
 }

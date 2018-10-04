@@ -101,6 +101,6 @@ public enum Users {
 
     @Override
     public String toString() {
-        return "email = '" + email + "";
+        return firstName + "_" + lastName;
     }
 }

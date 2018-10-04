@@ -1,0 +1,37 @@
+[
+  {
+    "currentDate": "Thu Oct 04 15:48:37 EEST 2018",
+    "location": "Cherry Hill, NJ",
+    "service": "Massage",
+    "therapist": "Dwyane W.",
+    "date": "Thursday, Oct 04, 2018 1:30PM",
+    "duration": "Duration: 1 hour 30 min",
+    "subTotal": "$129.95",
+    "tax": "$9.10",
+    "total": "$139.05"
+  }
+][
+  {
+    "currentDate": "Thu Oct 04 15:49:13 EEST 2018",
+    "location": "Cherry Hill, NJ",
+    "service": "Massage",
+    "therapist": "Skill C.",
+    "date": "Thursday, Oct 04, 2018 9:30AM",
+    "duration": "Duration: 1 hour",
+    "subTotal": "$49.95",
+    "tax": "$3.50",
+    "total": "$53.45"
+  }
+][
+  {
+    "currentDate": "Thu Oct 04 15:52:36 EEST 2018",
+    "location": "Cherry Hill, NJ",
+    "service": "Hot Stone Massage",
+    "therapist": "Vladyslav C.",
+    "date": "Thursday, Oct 04, 2018 10:00AM",
+    "duration": "Duration: 1 hour",
+    "subTotal": "$50.95",
+    "tax": "$2.93",
+    "total": "$53.88"
+  }
+]
